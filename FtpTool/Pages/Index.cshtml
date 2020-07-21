@@ -1,0 +1,36 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">FileName</th>
+                <th scope="col">Path</th>
+                <th scope="col">Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.FtpListItems != null && Model.FtpListItems.Count > 0)
+            {
+                @foreach (var item in Model.FtpListItems)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.FullName</td>
+                        <td><a href="/Index?handler=DownloadFile&fullName=@item.FullName"></a></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
