@@ -96,14 +96,14 @@ namespace FtpTool.Pages
             client.Disconnect();
         }
 
-        public void OnGetDownloadFile(string fullName)
+        public void OnGetDownloadFile(string fullName,string name)
         {
-            if (string.IsNullOrEmpty(fullName))
+            if (string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(name))
             {
                 return;
             }
             // specify the login credentials, unless you want to use the "anonymous" user account
-            client.Credentials = new NetworkCredential("david", "pass123");
+            client.Credentials = new NetworkCredential("demo", "password");
 
             try
             {
@@ -116,7 +116,7 @@ namespace FtpTool.Pages
             }
 
 
-            client.DownloadFile(@"C:\MyVideo_2.mp4", "/htdocs/MyVideo_2.mp4");
+            client.DownloadFile(string.Format("C:\\Users\\aksha\\Downloads\\{0}", name), fullName);
            
         }
 
